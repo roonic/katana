@@ -1,3 +1,8 @@
 /node_modules
 .env
 products.json
+scraped-data.json
+scraper.js
+scraper1.js
+scraper2.js
+adddata.js
