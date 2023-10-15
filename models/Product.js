@@ -1,20 +1,25 @@
 const mongoose = require('mongoose')
 
 const ProductSchema = new mongoose.Schema({
-  name: {
+  Name: {
     type: String,
     required: [true, 'must provide name'],
     trim: true,
   },
-  owner: {
-    type: String, 
-    default: 'Unknown',
-    trim: true,
+  Price: {
+    type: String,
+    default: '$69.00',
   },
-  description: {
+  Specifications: {
+    type: Object,
+  },
+  Description: {
     type: String,
     required: [true, 'must provide description'],
     trim: true
+  },
+  Dimensions: {
+    type: Object,
   },
   rating: {
     type: Number,

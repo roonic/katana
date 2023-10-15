@@ -1,0 +1,13 @@
+body {
+  background: red;
+}
+
+.container {
+  background: grey;
+}
+
+.carousel {
+  max-width: 70%;
+  justify-content: center;
+}
+

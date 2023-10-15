@@ -3,26 +3,26 @@ const {StatusCodes} = require('http-status-codes')
 
 const getAllProducts = async(req, res) => {
   try {
-    const { name, owner } = req.query
+    const { name } = req.query
     const queryObject = {}
 
     if (name) {
       queryObject.name = {  $regex: `^${name}`, $options: 'i' } 
     }
 
-    if (owner) {
-      queryObject.owner = { $regex: `^${owner}`, $options: 'i' } 
-    }
+//    if (owner) {
+//      queryObject.owner = { $regex: `^${owner}`, $options: 'i' } 
+//    }
 
     const page = Number(req.query.page) || 1
-    const limit = Number(req.query.limit) || 5 
+    const limit = Number(req.query.limit) || 6 
     const skip = (page - 1) * limit
 
     let result = await Product.find({})
       .skip(skip)
       .limit(limit)
       .where(queryObject)
-      .select(['name', 'owner', 'rating', 'availability'])
+      .select(['Name', 'rating', 'availability'])
     console.log(result)
 
     res.status(StatusCodes.OK).json({result, nbHits: result.length})

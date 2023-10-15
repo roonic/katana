@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const connectDB = require('./database/connectdb')
 const product = require('./models/Product')
-const jsonProduct = require('./database/products.json')
+const jsonProduct = require('./database/scraped-data.json')
 
 const start = async () => {
   try {
