@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 
 <head>
-    <title>かたな</title>
+    <meta charset="utf-8">
+    <title lang="ja-jp">かたな</title>
     <style>
         h1 {
             text-align: center;
@@ -72,16 +73,19 @@
     <script>
         $(document).ready(() => {
             $.ajax({
-                url: '', // API endpoint
+                url: '/api/products', // API endpoint
                 method: 'GET',
                 success: (data) => {
                     // card template
+		    
+		    console.log(data)
+//		    <div class="slide slide1" style="background-image: url(${katana.imageURL});">
                     data.forEach((katana) => {
                         const card = `
                             <div class="item">
                                 <div class="container">
                                     <div class="card">
-                                         <div class="slide slide1" style="background-image: url(${katana.imageURL});">
+					  <div class="slide slide1" style="background-image: url(https://katana-sword.com/cdn/shop/products/2_0db92513-de3a-4042-aa6c-aa74f86dc2bc_800x.jpg?v=1666175478);">
                                               <div class="content">
                                                   <div class="icon">
                                                       <span class="fa fa-user-circle"></span>
@@ -91,10 +95,10 @@
                                         <div class="slide slide2">
                                             <div class="content">
                                                 <p>
-                                                    Name: ${katana.name}<br>
-                                                    Price: $${katana.price.toFixed(2)}<br>
+                                                    Name: ${katana.Name}<br>
+                                                    Price: $${katana.Price}<br>
                                                     Rating: ${katana.rating}/5<br>
-                                                    ${katana.stock ? 'In Stock' : 'Not in Stock'}<br>
+                                                    ${katana.availability ? 'In Stock' : 'Not in Stock'}<br>
                                                     See more
                                                 </p>
                                             </div>

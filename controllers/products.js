@@ -22,10 +22,10 @@ const getAllProducts = async(req, res) => {
       .skip(skip)
       .limit(limit)
       .where(queryObject)
-      .select(['Name', 'rating', 'availability'])
+      .select(['Name', 'rating', 'availability','Price'])
     console.log(result)
 
-    res.status(StatusCodes.OK).json({result, nbHits: result.length})
+    res.status(StatusCodes.OK).json(result)
   }
   catch(err) {
     console.log(err)
@@ -40,7 +40,7 @@ const getProduct = async (req, res) => {
     if (!product) {
       res.status(StatusCodes.NOT_FOUND).send(`No productID with id: ${productID}`)
     }
-    res.status(StatusCodes.OK).json({ product })
+    res.status(StatusCodes.OK).json( product )
   } catch(err) {
     console.log(err)
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({msg: err})
